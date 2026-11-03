@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Эмилия Бунчак — Психолог, психоаналитический терапевт</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Обновленная светлая и мягкая палитра на основе Warm Cream и Olive/Terracotta */
+            --charcoal: #3A2E26;       /* Глубокий тёплый каштан для идеальной читаемости */
+            --terracotta: #A46342;     /* Терракота (чуть светлее и мягче) */
+            --terracotta-dark: #824B2F;
+            --olive: #787449;          /* Оливковый мох (свежий, не темный) */
+            --olive-deep: #5A5734;
+            --mustard: #B88522;        /* Горчичное золото */
+            --clay: #C29875;           /* Глина / охра */
+            --cream-bg: #FAF7F2;       /* Светлый тёплый крем (легче и воздушнее) */
+            --cream-card: #FFFFFF;     /* Чистый белый для карточек */
+            --cream-soft: #F2ECE1;     /* Мягкий бежевый тон для контрастных блоков */
+            --border-subtle: rgba(58, 46, 38, 0.1);
+            --border-medium: rgba(58, 46, 38, 0.2);
+            --text-main: #3A2E26;
+            --text-muted: #6B5D52;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Manrope', -apple-system, sans-serif;
+            --ease: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Полное устранение синей рамки выделения (фокуса) браузера */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+
+        *:focus, *:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--cream-bg);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* Деликатная фактура дизайнерской бумаги */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------------- ШАПКА ---------------- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(247, 243, 235, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 16px 0;
+            transition: var(--ease);
+        }
+
+        header.scrolled {
+            padding: 11px 0;
+            box-shadow: 0 4px 18px rgba(56, 44, 35, 0.04);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-name {
+            font-family: var(--font-serif);
+            font-size: 1.65rem;
+            color: var(--charcoal);
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 7px 15px;
+            border-radius: 20px;
+            transition: var(--ease);
+        }
+
+        .nav-desktop a:hover {
+            color: var(--terracotta);
+            background: rgba(156, 93, 60, 0.07);
+        }
+
+        /* Бургер-кнопка */
+        .burger-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 38px;
+            height: 38px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            padding: 6px;
+            z-index: 1100;
+        }
+
+        .burger-btn span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            transition: var(--ease);
+        }
+
+        .burger-btn.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger-btn.active span:nth-child(2) { opacity: 0; }
+        .burger-btn.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-drawer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(247, 243, 235, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 1050;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-drawer.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-links {
+            list-style: none;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .mobile-links a {
+            text-decoration: none;
+            font-family: var(--font-serif);
+            font-size: 1.85rem;
+            color: var(--charcoal);
+        }
+
+        /* ---------------- ПЕРВЫЙ ЭКРАН ---------------- */
+        .hero {
+            padding: 65px 0 55px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.74rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.3rem, 3.8vw, 3.4rem);
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--charcoal);
+            margin-bottom: 18px;
+        }
+
+        .hero-title i {
+            font-style: italic;
+            color: var(--olive);
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding: 18px 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .metric-val {
+            font-family: var(--font-serif);
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: var(--olive);
+            line-height: 1.1;
+        }
+
+        .metric-lbl {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 3px;
+            line-height: 1.35;
+        }
+
+        .hero-photo-inner {
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 14px 40px rgba(56, 44, 35, 0.1);
+            background: #dfd8cc;
+        }
+
+        .hero-photo-inner img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ---------------- БЛОК СМЫСЛОВ И ПОДХОДА ---------------- */
+        .credo-strip {
+            background: var(--cream-soft);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        .credo-quote {
+            font-family: var(--font-serif);
+            font-size: clamp(1.45rem, 2.4vw, 2.1rem);
+            font-style: italic;
+            color: var(--charcoal);
+            max-width: 860px;
+            margin: 0 auto 12px;
+            line-height: 1.4;
+        }
+
+        .credo-sub {
+            font-size: 0.94rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* ---------------- РАЗДЕЛЫ ---------------- */
+        section {
+            padding: 85px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 48px;
+        }
+
+        .section-tag {
+            font-size: 0.74rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 3.2vw, 2.7rem);
+            color: var(--charcoal);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .section-title i {
+            font-style: italic;
+            color: var(--olive);
+        }
+
+        /* Сетка тем практики */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .service-card {
+            background: var(--cream-card);
+            border-radius: 16px;
+            padding: 30px 26px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 6px 20px rgba(56, 44, 35, 0.03);
+            transition: var(--ease);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--clay);
+            box-shadow: 0 12px 30px rgba(56, 44, 35, 0.07);
+        }
+
+        .service-tag {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            color: var(--terracotta);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            color: var(--charcoal);
+            font-weight: 600;
+            line-height: 1.25;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        /* ---------------- ОБРАЗОВАНИЕ И ОПЫТ ---------------- */
+        .about-section {
+            background: var(--cream-soft);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: flex-start;
+        }
+
+        .status-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 18px 0 26px;
+        }
+
+        .status-pill {
+            background: var(--cream-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--charcoal);
+            padding: 5px 13px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .academic-box {
+            background: var(--cream-card);
+            border-radius: 14px;
+            padding: 22px 24px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .academic-title {
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--terracotta);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .academic-list {
+            list-style: none;
+        }
+
+        .academic-list li {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(56, 44, 35, 0.05);
+            line-height: 1.5;
+        }
+
+        .academic-list li:last-child {
+            border-bottom: none;
+        }
+
+        .edu-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .edu-card {
+            background: var(--cream-card);
+            border-radius: 14px;
+            padding: 18px 22px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .edu-year {
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--mustard);
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .edu-title {
+            font-family: var(--font-serif);
+            font-size: 1.18rem;
+            color: var(--charcoal);
+            font-weight: 600;
+            line-height: 1.25;
+            margin-bottom: 3px;
+        }
+
+        .edu-sub {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        /* ---------------- УСЛОВИЯ ---------------- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .price-card {
+            background: var(--cream-card);
+            border-radius: 18px;
+            padding: 34px 30px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 8px 24px rgba(56, 44, 35, 0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-badge {
+            align-self: flex-start;
+            background: rgba(110, 107, 65, 0.1);
+            color: var(--olive);
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+
+        .price-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            color: var(--charcoal);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .price-val {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--charcoal);
+            font-weight: 600;
+            margin: 14px 0 2px;
+            line-height: 1.1;
+        }
+
+        .price-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+
+        .price-features li {
+            font-size: 0.88rem;
+            color: var(--text-main);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(56, 44, 35, 0.05);
+        }
+
+        .price-note {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            font-style: italic;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 14px;
+        }
+
+        /* ---------------- БЛОК ТЕЛЕГРАМ И МАТЕРИАЛЫ ---------------- */
+        .channel-banner {
+            background: linear-gradient(135deg, var(--olive) 0%, var(--olive-deep) 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 40px 42px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 30px;
+            align-items: center;
+            box-shadow: 0 12px 30px rgba(71, 71, 40, 0.18);
+        }
+
+        .channel-title {
+            font-family: var(--font-serif);
+            font-size: 1.95rem;
+            font-weight: 500;
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+
+        .channel-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .channel-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .btn-channel {
+            background: #ffffff;
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 11px 24px;
+            border-radius: 30px;
+            transition: var(--ease);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-channel:hover {
+            background: #FAF6ED;
+            transform: translateY(-2px);
+        }
+
+        /* ---------------- КОНТАКТЫ ---------------- */
+        .contacts-section {
+            background: var(--cream-soft);
+            border-top: 1px solid var(--border-subtle);
+            padding: 75px 0 65px;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .contacts-info h2 {
+            font-family: var(--font-serif);
+            font-size: 2.3rem;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .contact-phone {
+            font-family: var(--font-serif);
+            font-size: 1.85rem;
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin: 6px 0 14px;
+            transition: var(--ease);
+        }
+
+        .contact-phone:hover {
+            color: var(--terracotta);
+        }
+
+        .messenger-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .msg-btn {
+            text-decoration: none;
+            font-size: 0.84rem;
+            font-weight: 600;
+            padding: 7px 16px;
+            border-radius: 20px;
+            background: var(--cream-card);
+            color: var(--charcoal);
+            border: 1px solid var(--border-subtle);
+            transition: var(--ease);
+        }
+
+        .msg-btn:hover {
+            background: var(--olive);
+            color: #ffffff;
+            border-color: var(--olive);
+            transform: translateY(-2px);
+        }
+
+        .location-card {
+            background: var(--cream-card);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .metro-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0 16px;
+        }
+
+        .metro-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--cream-bg);
+            border: 1px solid var(--border-subtle);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        .metro-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #E44033; }
+        .dot-orange { background: #ED7E24; }
+        .dot-green { background: #82C240; }
+
+        .address-route {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* ---------------- ПОДВАЛ ---------------- */
+        footer {
+            background: var(--charcoal);
+            color: #d1c7b5;
+            padding: 45px 0 35px;
+            text-align: center;
+        }
+
+        .footer-quote {
+            font-family: var(--font-serif);
+            font-size: 1.45rem;
+            font-style: italic;
+            color: #F7F3EB;
+            margin-bottom: 12px;
+        }
+
+        .footer-rights {
+            font-size: 0.84rem;
+            opacity: 0.7;
+        }
+
+        /* ---------------- АДАПТИВНОСТЬ И МОБИЛЬНАЯ ОПТИМИЗАЦИЯ ---------------- */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+            .hero-photo-inner img { height: 440px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .about-grid { grid-template-columns: 1fr; gap: 36px; }
+            .channel-banner { grid-template-columns: 1fr; gap: 24px; padding: 36px 32px; }
+            .contacts-grid { grid-template-columns: 1fr; gap: 36px; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 18px; }
+            header { padding: 14px 0; }
+            .brand-name { font-size: 1.55rem; }
+            .nav-desktop { display: none; }
+            .burger-btn, .mobile-drawer { display: flex; }
+
+            /* Главный экран */
+            .hero { padding: 36px 0 40px; }
+            .hero-grid { gap: 28px; }
+            .hero-title { font-size: 2.15rem; line-height: 1.22; margin-bottom: 14px; }
+            .hero-desc { font-size: 0.98rem; line-height: 1.7; margin-bottom: 22px; }
+            .hero-photo-inner img { height: 360px; object-position: center 20%; }
+            .hero-metrics { grid-template-columns: 1fr; gap: 12px; padding: 16px 0; }
+            .metric-val { font-size: 1.55rem; }
+            .metric-lbl { font-size: 0.84rem; }
+
+            /* Манифест */
+            .credo-strip { padding: 38px 0; }
+            .credo-quote { font-size: 1.4rem; line-height: 1.45; }
+            .credo-sub { font-size: 0.9rem; line-height: 1.65; }
+
+            /* Разделы */
+            section { padding: 60px 0; }
+            .section-header { margin-bottom: 34px; }
+            .section-title { font-size: 1.95rem; }
+            .services-grid { grid-template-columns: 1fr; gap: 16px; }
+            .service-card { padding: 24px 20px; }
+            .service-card h3 { font-size: 1.35rem; }
+
+            /* Опыт и образование */
+            .about-section { padding: 60px 0; }
+            .academic-box { padding: 20px 18px; }
+            .academic-list li { font-size: 0.88rem; }
+            .edu-card { padding: 16px 18px; }
+            .edu-title { font-size: 1.1rem; }
+
+            /* Форматы и цены */
+            .pricing-grid { grid-template-columns: 1fr; gap: 18px; }
+            .price-card { padding: 28px 22px; border-radius: 18px; }
+            .price-card h3 { font-size: 1.65rem; }
+            .price-val { font-size: 2rem; margin: 12px 0 2px; }
+
+            /* Канал */
+            .channel-banner { padding: 30px 20px; border-radius: 18px; }
+            .channel-title { font-size: 1.65rem; }
+            .btn-channel { width: 100%; justify-content: center; padding: 12px 20px; font-size: 0.92rem; }
+
+            /* Контакты: удобные тач-кнопки для пальца */
+            .contacts-section { padding: 60px 0 50px; }
+            .contacts-info h2 { font-size: 2rem; }
+            .contact-phone { font-size: 1.7rem; margin: 4px 0 14px; }
+            .messenger-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+            .msg-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 44px;
+                padding: 10px 12px;
+                font-size: 0.86rem;
+                text-align: center;
+            }
+            .location-card { padding: 22px 18px; }
+            .metro-pills { gap: 6px; }
+
+            /* Подвал */
+            footer { padding: 40px 0 calc(30px + env(safe-area-inset-bottom, 0px)); }
+            .footer-quote { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header id="siteHeader">
+        <div class="container header-inner">
+            <a href="#" class="brand-link">
+                <span class="brand-name">Эмилия Бунчак</span>
+            </a>
+
+            <nav>
+                <ul class="nav-desktop">
+                    <li><a href="#about">О терапевте</a></li>
+                    <li><a href="#services">Темы работы</a></li>
+                    <li><a href="#education">Образование</a></li>
+                    <li><a href="#pricing">Формат и стоимость</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+
+            <button class="burger-btn" id="burgerToggle" aria-label="Меню">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- МОБИЛЬНОЕ МЕНЮ -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <ul class="mobile-links">
+            <li><a href="#about" class="mobile-nav-link">О терапевте</a></li>
+            <li><a href="#services" class="mobile-nav-link">Темы работы</a></li>
+            <li><a href="#education" class="mobile-nav-link">Образование</a></li>
+            <li><a href="#pricing" class="mobile-nav-link">Формат и стоимость</a></li>
+            <li><a href="#contacts" class="mobile-nav-link">Контакты</a></li>
+        </ul>
+    </div>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+    <div class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="hero-badge">Психоаналитическая терапия • Очно и онлайн</span>
+                <h1 class="hero-title">
+                    Психоаналитическая терапия, ведущая к <i>устойчивым изменениям</i>
+                </h1>
+                <p class="hero-desc">
+                    Психоаналитический подход работает не только на уровне внешнего поведения, но и на глубинном уровне восприятия. Бережное исследование внутренних конфликтов, отношений, образа тела и поиск собственной устойчивой опоры.
+                </p>
+
+                <div class="hero-metrics">
+                    <div>
+                        <div class="metric-val">с 2019 г.</div>
+                        <div class="metric-lbl">практика в психоаналитическом подходе</div>
+                    </div>
+                    <div>
+                        <div class="metric-val">900+ часов</div>
+                        <div class="metric-lbl">непрерывного личного анализа</div>
+                    </div>
+                    <div>
+                        <div class="metric-val">МПА • IPA</div>
+                        <div class="metric-lbl">регулярные супервизии и стандарты</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-photo-wrap">
+                <div class="hero-photo-inner">
+                    <img src="Emilia.jpg" alt="Бунчак Эмилия Васильевна">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- КРЕДО ТЕРАПЕВТА -->
+    <div class="credo-strip">
+        <div class="container">
+            <div class="credo-quote">
+                «Открыв интерес к своей личности, жизнь приобретает совершенно новые краски»
+            </div>
+            <p class="credo-sub">
+                В процессе коррекции качества жизни невозможно просто набрать готовые советы. Глубинная работа помогает обнаружить собственные смыслы, выстроить баланс и внутреннюю опору.
+            </p>
+        </div>
+    </div>
+
+    <!-- ТЕМЫ РАБОТЫ (СТРОГО ПО B17) -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Направления практики</span>
+                <h2 class="section-title">С чем я <i>работаю</i></h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-tag">01 / ТЕЛО И РПП</span>
+                    <h3>Тело и пищевое поведение</h3>
+                    <p>
+                        Восприятие своего тела, нарушения пищевого поведения, непринятие внешности. Исследование психосоматических связей и оси «тело–психика».
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-tag">02 / ОТНОШЕНИЯ</span>
+                    <h3>Отношения в паре</h3>
+                    <p>
+                        Сложности доверия и близости, эмоциональная зависимость, переживание кризисов, расставаний и повторяющихся сценариев в паре.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-tag">03 / СЕКСУАЛЬНОСТЬ</span>
+                    <h3>Сексуальная жизнь</h3>
+                    <p>
+                        Вопросы психосексуальной сферы, исследование мужского и женского у обоих полов, преодоление чувства вины и скованности.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-tag">04 / РОДИТЕЛЬСТВО</span>
+                    <h3>Беременность и материнство</h3>
+                    <p>
+                        Планирование и психологическое сопровождение беременности, поддержка после родов для любого из родителей, путь к женскому «материнскому».
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-tag">05 / СМЫСЛЫ</span>
+                    <h3>Реализация и карьера</h3>
+                    <p>
+                        Поиск смыслов, выгорание, построение карьеры, отношения с окружающими. Укрепление самоощущения с опорой на 15+ лет руководящего опыта.
+                    </p>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-tag">06 / СЕТТИНГ</span>
+                    <h3>Терапия в долгую</h3>
+                    <p>
+                        Стабильная регулярная работа в согласованный день недели без неожиданных отмен и переносов сессий. Средняя длительность терапии в практике — 4 года.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О ТЕРАПЕВТЕ И ОБРАЗОВАНИИ -->
+    <section class="about-section" id="about">
+        <div class="container about-grid">
+            <div>
+                <span class="section-tag">О терапевте</span>
+                <h2 class="section-title">Бунчак Эмилия <i>Васильевна</i></h2>
+                <p style="color: var(--text-muted); font-size: 1rem; margin-top: 14px; line-height: 1.75;">
+                    Практикую в психоаналитическом подходе с 2019 года и убеждена, что он является самым глубинным видом терапии и приводит к устойчивым изменениям не только на уровне поведения, но и на уровне восприятия. Прохожу личный анализ у одного специалиста более 900 часов (~6 лет).
+                </p>
+
+                <div class="status-tags">
+                    <span class="status-pill">Ассоциированный член МПА</span>
+                    <span class="status-pill">Член La cause des bébés (Франция)</span>
+                    <span class="status-pill">Член АПАГ</span>
+                    <span class="status-pill">Специалист платформы Sense-A</span>
+                    <span class="status-pill">Супервизии у членов IPA</span>
+                </div>
+
+                <div class="academic-box">
+                    <div class="academic-title">Темы академических работ и докладов:</div>
+                    <ul class="academic-list">
+                        <li>«Феномен красоты женского тела в психоаналитических теориях»</li>
+                        <li>«Психоаналитический путь к женскому «материнскому»»</li>
+                        <li>«Меланхолия на двоих в ходе психоаналитической психотерапии»</li>
+                        <li>Докладчик конференции МПА «Мужское и женское» — «В кабинете встречаются четверо. О психической бисексуальности» (2026 г.)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="edu-stack" id="education">
+                <div class="edu-card">
+                    <div class="edu-year">Сеченовский Университет • 2026 – н.в.</div>
+                    <div class="edu-title">Превентивное управление здоровьем</div>
+                    <div class="edu-sub">Консультирование в сфере превентивного управления здоровьем, переподготовка (288 ч.)</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-year">НИУ ВШЭ • 2025</div>
+                    <div class="edu-title">Основы клинического психоанализа</div>
+                    <div class="edu-sub">Практика и техника психотерапии, профессиональная переподготовка (374 ч.)</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-year">ВЕИП • 2023–2026</div>
+                    <div class="edu-title">Психоанализ (Второе высшее, бакалавриат)</div>
+                    <div class="edu-sub">Восточно-Европейский Институт Психоанализа (2 859 ч.)</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-year">Институт Психотерапии и клин. психологии • 2021–2022</div>
+                    <div class="edu-title">Перинатальная и репродуктивная психология</div>
+                    <div class="edu-sub">Современные технологии перинатальной и репродуктивной психотерапии (300 ч.)</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-year">НИУ ВШЭ • 2018–2020</div>
+                    <div class="edu-title">Магистр психологии</div>
+                    <div class="edu-sub">Психоанализ и психоаналитическое бизнес-консультирование, магистратура (1 232 ч.)</div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-year">СПбГУ • 2002–2007</div>
+                    <div class="edu-title">Менеджмент организации</div>
+                    <div class="edu-sub">Высшая школа менеджмента СПбГУ • 15+ лет руководящего опыта в международных корпорациях</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФОРМАТ И СТОИМОСТЬ -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Прозрачные условия</span>
+                <h2 class="section-title">Формат сессий и <i>стоимость</i></h2>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div>
+                        <span class="price-badge">Очный приём в Москве</span>
+                        <h3>Личный приём в кабинете</h3>
+                        <div class="price-val">5 000 ₽</div>
+                        <div class="price-meta">продолжительность: 50 минут</div>
+
+                        <ul class="price-features">
+                            <li>Индивидуальная очная терапия</li>
+                            <li>Стабильный сеттинг в согласованный день недели</li>
+                            <li>м. Чистые пруды / Тургеневская / Сретенский б-р</li>
+                        </ul>
+                    </div>
+                    <div class="price-note">
+                        Стоимость сессии не повышается первые 3 года работы.
+                    </div>
+                </div>
+
+                <div class="price-card">
+                    <div>
+                        <span class="price-badge">Онлайн-консультация</span>
+                        <h3>Видеосессия</h3>
+                        <div class="price-val">5 000 ₽</div>
+                        <div class="price-meta">продолжительность: 50 минут</div>
+
+                        <ul class="price-features">
+                            <li>Дистанционная видеосессия по всему миру</li>
+                            <li>Возможность короткого видеозвонка для знакомства</li>
+                            <li>Та же глубина анализа и регулярность</li>
+                        </ul>
+                    </div>
+                    <div class="price-note">
+                        Стоимость сессии не повышается первые 3 года работы.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТЕЛЕГРАМ КАНАЛ И ПУБЛИКАЦИИ B17 -->
+    <div style="padding-bottom: 85px;">
+        <div class="container">
+            <div class="channel-banner">
+                <div>
+                    <h3 class="channel-title">Telegram-канал <i>«На тропе»</i></h3>
+                    <p class="channel-text">
+                        Авторский telegram-канал о любви и смыслах. Размышления из практики, статьи о мужском и женском, телесности и ориентирах для каждого дня.
+                    </p>
+                </div>
+                <div class="channel-links">
+                    <a href="https://telegram.me/emilianatrope" target="_blank" class="btn-channel">
+                        <span>Канал в Telegram</span> ➔
+                    </a>
+                    <a href="https://www.b17.ru/bunchak_emiliya/#article" target="_blank" style="color: #FAF6ED; font-size: 0.88rem; text-decoration: underline; text-underline-offset: 4px;">
+                        Публикации на B17.ru (8 статей) ↗
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- КОНТАКТЫ -->
+    <div class="contacts-section" id="contacts">
+        <div class="container contacts-grid">
+            <div class="contacts-info">
+                <span class="section-tag">Связь</span>
+                <h2>Контакты для <i>связи</i></h2>
+                <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 18px;">
+                    Если вам близок мой подход, напишите в любой мессенджер для подбора времени первичного приёма. Также возможно организовать короткий видеозвонок для знакомства.
+                </p>
+
+                <a href="tel:+79163135660" class="contact-phone">+7 916 313-56-60</a>
+                <div class="messenger-row">
+                    <a href="https://t.me/+79163135660" target="_blank" class="msg-btn">Telegram</a>
+                    <a href="https://wa.me/79163135660" target="_blank" class="msg-btn">WhatsApp</a>
+                    <a href="sms:+79163135660" class="msg-btn">SMS</a>
+                    <a href="https://www.b17.ru/bunchak_emiliya/" target="_blank" class="msg-btn">Страница на B17.ru</a>
+                </div>
+            </div>
+
+            <div class="location-card">
+                <span class="section-tag" style="margin-bottom: 6px;">Локация в Москве</span>
+                <div style="font-family: var(--font-serif); font-size: 1.55rem; font-weight: 600; margin-bottom: 6px;">
+                    Кабинет в центре города
+                </div>
+
+                <div class="metro-pills">
+                    <span class="metro-pill"><span class="metro-dot dot-red"></span>Чистые пруды</span>
+                    <span class="metro-pill"><span class="metro-dot dot-orange"></span>Тургеневская</span>
+                    <span class="metro-pill"><span class="metro-dot dot-green"></span>Сретенский бульвар</span>
+                </div>
+
+                <div class="address-route">
+                    Приём проводится очно в кабинете по предварительной договоренности, а также дистанционно в защищенном видеоформате.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <div class="container">
+            <div class="footer-quote">«Открыв интерес к своей личности, жизнь приобретает совершенно новые краски»</div>
+            <div class="footer-rights">
+                &copy; 2026 Бунчак Эмилия Васильевна • Психолог, психоаналитическая терапия
+            </div>
+        </div>
+    </footer>
+
+    <!-- СКРИПТ СКРОЛЛА И МОБИЛЬНОГО МЕНЮ -->
+    <script>
+        const header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const burgerToggle = document.getElementById('burgerToggle');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        if (burgerToggle && mobileDrawer) {
+            burgerToggle.addEventListener('click', () => {
+                const isOpen = mobileDrawer.classList.contains('open');
+                burgerToggle.classList.toggle('active', !isOpen);
+                mobileDrawer.classList.toggle('open', !isOpen);
+                document.body.style.overflow = !isOpen ? 'hidden' : '';
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    burgerToggle.classList.remove('active');
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
